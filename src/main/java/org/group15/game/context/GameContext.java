@@ -1,7 +1,7 @@
 package org.group15.game.context;
 import org.group15.player.Player;
 
-class GameContext {
+public class GameContext {
     private GameState state;
     private Player[] players;
     private Player currentplayer;
