@@ -1,5 +1,6 @@
 package org.group15.effects;
 
+import org.group15.game.context.ExtraTurnState;
 import org.group15.game.context.GameContext;
 
 
@@ -12,7 +13,7 @@ public class ExtraTurnEffect extends Effect {
     }
 
     public void apply() {
-        this.context.doNextPlayerTurn();
+        this.context.setState(new ExtraTurnState());
     }
     public String getDescription() {
         return this.context.getCurrentPlayer().getName() + " gets another turn!";
