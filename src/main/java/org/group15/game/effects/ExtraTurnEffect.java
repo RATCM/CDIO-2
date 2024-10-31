@@ -1,4 +1,4 @@
-package org.group15.effects;
+package org.group15.game.effects;
 
 import org.group15.game.context.ExtraTurnState;
 import org.group15.game.context.GameContext;
