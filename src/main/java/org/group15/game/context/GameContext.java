@@ -1,6 +1,6 @@
 package org.group15.game.context;
 
-class GameContext {
+public class GameContext {
     private GameState state;
     private Player[] players;
     private Player currentplayer;
