@@ -1,7 +1,7 @@
 package org.group15.dice;
 
 
-class DiceController {
+public class DiceController {
 
     private DiceView view;
     private DiceModel dice;
