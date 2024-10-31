@@ -4,6 +4,6 @@ public class ExtraTurnState extends GameState {
 
     @Override
     public void doNextTurn(GameContext context) {
-
+        context.setDefaultState();
     }
 }

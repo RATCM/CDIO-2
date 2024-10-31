@@ -1,4 +1,5 @@
 package org.group15.game.context;
+import org.group15.player.Player;
 
 class GameContext {
     private GameState state;
@@ -15,10 +16,12 @@ class GameContext {
     // TODO
     //switches game state
     public void setState(GameState newState) {
+        this.state = newState;
 
     }
     // TODO
     public void setDefaultState() {
+        this.state = new DefaultState();
 
     }
 
@@ -37,9 +40,9 @@ class GameContext {
     public Player getCurrentPlayer() {
         return this.currentplayer;
     }
-    // TODO
-    public void setCurrentPlayer(Player currentPlayer) {
 
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentplayer = currentPlayer;
     }
 
 
