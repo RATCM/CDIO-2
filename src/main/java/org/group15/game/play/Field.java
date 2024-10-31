@@ -1,6 +1,6 @@
 package org.group15.game.play;
 
-import org.group15.effects.Effect;
+import org.group15.game.effects.Effect;
 import org.group15.player.Player;
 
 import java.util.ArrayList;
@@ -11,35 +11,40 @@ public class Field {
     ArrayList<Player> playersOnField;
     private Effect[] effects;
 
-    // TODO
-    public Field(Effect[] effects, int position){
 
+
+    public Field(Effect[] effects, int position){
+        this.effects = effects;
+        this.position = position;
     }
 
-    // TODO
     // add player to list
     // return true if successful, else false
     public boolean addPlayer(Player player){
-        return false;
+        return playersOnField.add(player);
     }
 
-    // TODO
+
     // remove player from list
     // return true if successful, else false
     public boolean removePlayer(Player player){
-        return false;
+        return playersOnField.remove(player);
     }
 
-    // TODO
+
     // Whether or not the array contains the player
     public boolean hasPlayer(Player player){
-        return false;
+        return playersOnField.contains(player);
     }
 
-    // TODO
+
     // applies the field effects to the player
     // return true if successful, else false
     public boolean applyFieldEffects(Player player){
+        for (Effect effect : effects){
+            effect.apply();
+        }
+
         return false;
     }
 }
