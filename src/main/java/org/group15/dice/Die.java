@@ -15,6 +15,12 @@ public class Die {
         random = new Random();
     }
 
+    Die(int sides, RandomGenerator random){
+        this.sides = sides;
+        this.value = -1;
+        this.random = random;
+    }
+
     void roll() {
         this.value = random.nextInt(1,(sides+1));
     }
