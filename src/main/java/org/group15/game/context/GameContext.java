@@ -13,13 +13,13 @@ public class GameContext {
         this.state = new DefaultState();
     }
 
-    // TODO
     //switches game state
     public void setState(GameState newState) {
         this.state = newState;
 
     }
-    // TODO
+
+
     public void setDefaultState() {
         this.state = new DefaultState();
 
