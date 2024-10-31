@@ -1,4 +1,4 @@
-package org.group15.test.player;
+package org.group15.player;
 
 import org.junit.jupiter.api.*;
 
