@@ -1,15 +1,18 @@
 package org.group15.dice;
 
+import java.util.Random;
+import java.util.random.RandomGenerator;
+
 public class Die {
 
     private int value;
     private int sides;
-    private final java.util.Random random;
+    private final RandomGenerator random;
 
     Die(int sides){
         this.sides = sides;
         this.value = -1;
-        random = new java.util.Random();
+        random = new Random();
     }
 
     void roll() {
