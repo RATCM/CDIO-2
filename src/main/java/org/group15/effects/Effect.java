@@ -5,7 +5,7 @@ public abstract class Effect {
     protected GameContext context;
 
     protected Effect(GameContext context) {
-        this.GameContext = context;
+        this.context = context;
     }
 
     public abstract void apply();
