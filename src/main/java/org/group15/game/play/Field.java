@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Field {
     public int position;
     public String description;
-    ArrayList<Player> playersOnField;
+    ArrayList<Player> playersOnField = new ArrayList<Player>();
     private Effect[] effects;
 
 

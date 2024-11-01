@@ -26,7 +26,7 @@ public class SimpleDiceView implements DiceView {
 
     public void displayRollResult(Die[] dice) {
         for (var d : dice) {
-            System.out.println("You rolled: " + d);
+            System.out.println("You rolled: " + d.getValue());
         }
     }
 

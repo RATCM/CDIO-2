@@ -42,6 +42,8 @@ public class GameController {
 
         applyFieldEffectsToCurrentPlayer(roll-1);
 
+        model.getContext().doNextPlayerTurn();
+
     }
 
     // TODO
@@ -77,6 +79,10 @@ public class GameController {
             }
         }
         return false;
+    }
+
+    public GameContext getContext(){
+        return model.getContext();
     }
 
     // TODO
