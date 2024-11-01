@@ -5,13 +5,13 @@ public class Account {
     private final int maxAmount;
 
     public Account(int initAmount) {
-        this.amount = Math.max(initAmount, 0);
         this.maxAmount = 3000;
+        this.amount = Math.clamp(initAmount, 0, maxAmount);
     }
 
     public Account(int initAmount, int maxAmount) {
-        this.amount = Math.max(initAmount, 0);
         this.maxAmount = maxAmount;
+        this.amount = Math.clamp(initAmount, 0, maxAmount);
     }
 
     public int getAmount() {
