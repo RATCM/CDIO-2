@@ -13,50 +13,49 @@ public class GameController {
     private GameModel model;
     private DiceController diceController;
 
-    // TODO
-    public GameController(Player[] player){
+    public GameController(Player[] player, Scanner scanner){
         this.model = new GameModel(player);
-        this.view = new SimpleGameView(new Scanner(System.in));
-        this.diceController = new DiceController(2,6);
+        this.view = new SimpleGameView(scanner);
+        this.diceController = new DiceController(2,6, scanner);
 
     }
 
-    // TODO
     // Used if you wanna use a different GameView instead
     // of the default one
-    public GameController(Player[] player, GameView view){
+    public GameController(Player[] player, GameView view, Scanner scanner){
         this.model = new GameModel(player);
         this.view = view;
-        this.diceController = new DiceController(2,6);
+        this.diceController = new DiceController(2,6, scanner);
     }
 
-    // TODO
     // Calls the getUserRoll method in DiceController
     // And updates the game context
     public void rollDice(){
         int roll = calculateFieldPosition(diceController.retrieveUserRoll().getDice());
+        Player player = model.getContext().getCurrentPlayer();
 
-        removePlayerFromField();
+        Field previousField = findFieldWithPlayer(player);
+        Field nextField = model.getFields().get(roll);
 
-        putCurrentPlayerOnField(roll-1);
+        removePlayerFromField(player, previousField);
 
-        applyFieldEffectsToCurrentPlayer(roll-1);
+        putPlayerOnField(player, nextField);
 
-        showField();
+        applyFieldEffects(nextField);
+
+        showField(nextField);
+        displayPlayerInfo(player);
 
         model.getContext().doNextPlayerTurn();
 
     }
 
-    // TODO
     // Displays the field description to the player
     // through the GameView interface
-    public void showField(){
-        view.showField(findFieldWithPlayer(model.getContext().getCurrentPlayer()));
-
+    private void showField(Field field){
+        view.showField(field);
     }
 
-    // TODO
     // Returns whether some player has won.
     public boolean checkForWinner(){
         for(Player player: model.getContext().getAllPlayers()){
@@ -68,7 +67,10 @@ public class GameController {
         return false;
     }
 
-    // TODO
+    private void displayPlayerInfo(Player player){
+        view.showPlayerInfo(player);
+    }
+
     // Displays the winning player through the
     // GameView interface
     public boolean displayWinningPlayer(){
@@ -88,54 +90,46 @@ public class GameController {
         return model.getContext();
     }
 
-    // TODO
     // Returns the position corresponding to the dice throw.
     // e.g. [2,5] returns 7
     private int calculateFieldPosition(Die[] dice){
         int roll = 0;
 
-        for(int i = 0; i < dice.length; i++){
-            roll += dice[i].getValue();
+        for (Die die : dice) {
+            roll += die.getValue();
         }
-        return roll -1;
+        return roll;
     }
 
-    // TODO
     // Puts the currentPlayer in the GameContext to the field
-    // at a the specified position.
-    private boolean putCurrentPlayerOnField(int position){
-         Field field = model.getFields()[position];
+    // at the specified position.
+    private boolean putPlayerOnField(Player player, Field field){
+        if(player == null || field == null)
+            return false;
 
-         field.addPlayer(model.getContext().getCurrentPlayer());
-
-        return false;
+         return field.addPlayer(player);
     }
 
-    // TODO
     // Removes the currentPlayer in the GameContext from the field
-    // at a the specified position.
-    private boolean removePlayerFromField(){
-        for(Field field : model.getFields()){
-            if(field.hasPlayer(model.getContext().getCurrentPlayer())){
-                field.removePlayer(model.getContext().getCurrentPlayer());
-            }
-        }
+    // at the specified position.
+    private boolean removePlayerFromField(Player player, Field field){
+        if(player == null || field == null)
+            return false;
 
-        return false;
+        return field.removePlayer(player);
     }
 
-    // TODO
     // Applies all the field effects to the player.
-    private void applyFieldEffectsToCurrentPlayer(int roll){
-        this.model.getFields()[roll].applyFieldEffects();
+    private boolean applyFieldEffects(Field field){
+        if(field == null)
+            return false;
 
-
+        return field.applyFieldEffects();
     }
 
-    // TODO
     // Returns the field which contains the specified player.
     private Field findFieldWithPlayer(Player player){
-        for(Field field: model.getFields()){
+        for(Field field: model.getFields().values()){
             if(field.hasPlayer(player)){
                 return field;
             }

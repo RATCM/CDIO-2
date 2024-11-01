@@ -9,22 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("How many players?");
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        Player[] players = new Player[n];
+        var players = getPlayers(sc);
+        GameController gc = new GameController(players, sc);
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("Player " + (i + 1) + ", name: ");
-            String name = sc.next();
-            players[i] = new Player(i , name);
-        }
-
-        GameController gc = new GameController(players);
 
         while (!gc.checkForWinner()) {
-            System.out.println(gc.getContext().getCurrentPlayer().getName() + " Press enter to Roll!");
+            System.out.printf("%s's turn%s", gc.getContext().getCurrentPlayer().getName(), System.lineSeparator());
 
             gc.rollDice();
 
@@ -32,5 +24,21 @@ public class Main {
 
         gc.displayWinningPlayer();
 
+    }
+
+    private static Player[] getPlayers(Scanner scanner) {
+        System.out.println("How many players?");
+
+        int n = Integer.parseInt(scanner.nextLine());
+        Player[] players = new Player[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Player " + (i + 1) + ", name: ");
+            String name = scanner.nextLine();
+            players[i] = new Player(i , name);
+        }
+        System.out.println("--------------------");
+
+        return players;
     }
 }

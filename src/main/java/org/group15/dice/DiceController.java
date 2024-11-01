@@ -1,5 +1,6 @@
 package org.group15.dice;
 
+import java.util.Scanner;
 
 public class DiceController {
 
@@ -7,8 +8,7 @@ public class DiceController {
     private DiceModel dice;
 
     
-    public DiceController(int numDice, int numSides) {
-        var scanner = new java.util.Scanner(System.in);
+    public DiceController(int numDice, int numSides, Scanner scanner) {
         view = new SimpleDiceView(scanner);
         var diceArray = new Die[numDice];
         for (int i = 0 ; i < numDice ; i++) {
