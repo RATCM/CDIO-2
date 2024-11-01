@@ -40,11 +40,15 @@ public class Field {
 
     // applies the field effects to the player
     // return true if successful, else false
-    public boolean applyFieldEffects(Player player){
+    public boolean applyFieldEffects(){
+        boolean result = true;
+
         for (Effect effect : effects){
-            effect.apply();
+            if (!effect.apply()){
+                result = false;
+            };
         }
 
-        return false;
+        return result;
     }
 }

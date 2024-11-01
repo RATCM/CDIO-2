@@ -16,7 +16,6 @@ public class GameContext {
     //switches game state
     public void setState(GameState newState) {
         this.state = newState;
-
     }
 
 

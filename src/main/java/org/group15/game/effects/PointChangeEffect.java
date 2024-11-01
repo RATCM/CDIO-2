@@ -12,11 +12,11 @@ public class PointChangeEffect extends Effect{
         this.context = context;
     }
 
-    public void apply() {
+    public boolean apply() {
         if (amount > 0) {
-            this.context.getCurrentPlayer().getAccount().addAmount(amount);
+            return this.context.getCurrentPlayer().getAccount().addAmount(amount);
         } else {
-            this.context.getCurrentPlayer().getAccount().removeAmount(-amount);
+            return this.context.getCurrentPlayer().getAccount().removeAmount(-amount);
         }
     }
 

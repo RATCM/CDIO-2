@@ -8,7 +8,7 @@ public abstract class Effect {
         this.context = context;
     }
 
-    public abstract void apply();
+    public abstract boolean apply();
     public abstract String getDescription();
     public abstract Alignment getAlignment();
 }
