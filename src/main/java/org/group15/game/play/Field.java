@@ -20,14 +20,22 @@ public class Field {
     // add player to list
     // return true if successful, else false
     public boolean addPlayer(Player player){
-        return playersOnField.put(player.getId(), player) != null;
+        if(hasPlayer(player))
+            return false;
+
+        playersOnField.put(player.getId(), player);
+        return true;
     }
 
 
     // remove player from list
     // return true if successful, else false
     public boolean removePlayer(Player player){
-        return playersOnField.remove(player.getId()) != null;
+        if(!hasPlayer(player))
+            return false;
+
+        playersOnField.remove(player.getId());
+        return true;
     }
 
 
