@@ -12,6 +12,7 @@ public class PointChangeEffect extends Effect{
         this.context = context;
     }
 
+    @Override
     public boolean apply() {
         if (amount > 0) {
             return this.context.getCurrentPlayer().getAccount().addAmount(amount);
@@ -20,6 +21,7 @@ public class PointChangeEffect extends Effect{
         }
     }
 
+    @Override
     public String getDescription() {
         if (amount > 0) {
             return "Adds " + amount + " points to player " + this.context.getCurrentPlayer() + "'s account";
@@ -30,6 +32,7 @@ public class PointChangeEffect extends Effect{
         }
     }
 
+    @Override
     public Alignment getAlignment() {
         if (amount > 0) {
             return Alignment.Good;

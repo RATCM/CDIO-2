@@ -7,15 +7,21 @@ import java.util.ArrayList;
 
 public class Field {
     public int position;
-    public String description;
+    public String description = "";
     ArrayList<Player> playersOnField;
     private Effect[] effects;
 
 
 
-    public Field(Effect[] effects, int position){
+    public Field(Effect[] effects, int position) {
         this.effects = effects;
         this.position = position;
+
+        StringBuilder effectDescription = new StringBuilder();
+        for (Effect effect : effects) {
+            effectDescription.append(effect.getDescription());
+        }
+        this.description = effectDescription.toString();
     }
 
     // add player to list
