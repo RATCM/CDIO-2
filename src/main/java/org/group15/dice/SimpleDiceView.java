@@ -1,4 +1,5 @@
 package org.group15.dice;
+
 import java.util.Scanner;
 
 public class SimpleDiceView implements DiceView {
@@ -10,6 +11,7 @@ public class SimpleDiceView implements DiceView {
 
     //prompts user for input and pauses for 1 second then returns
     public void getUserRoll() {
+        System.out.println();
         System.out.println("Press enter to roll your dice.");
         scanner.nextLine();
         for (int i = 0 ; i < 10  ; i++) {
@@ -25,9 +27,11 @@ public class SimpleDiceView implements DiceView {
     }
 
     public void displayRollResult(Die[] dice) {
+        System.out.println();
         for (var d : dice) {
             System.out.println("You rolled: " + d.getValue());
         }
+        System.out.println();
     }
 
 }
