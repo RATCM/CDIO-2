@@ -3,7 +3,7 @@ import org.group15.game.context.GameContext;
 
 
 public class PointChangeEffect extends Effect{
-    private int amount;
+    private final int amount;
     protected GameContext context;
 
     public PointChangeEffect(int amount, GameContext context) {
@@ -23,17 +23,14 @@ public class PointChangeEffect extends Effect{
 
     @Override
     public String getDescription() {
-        if (amount > 0) {
-            return "Adds " + amount + " points to player " + this.context.getCurrentPlayer().getName() + "'s account"
-                    + System.lineSeparator() + this.context.getCurrentPlayer().getName() + " now has "
-                    + this.context.getCurrentPlayer().getAccount().getAmount() + " points";
-        } else if (amount < 0) {
-            return "Removes " + amount + " points from player " + this.context.getCurrentPlayer().getName() + "'s account"
-                    + System.lineSeparator() + this.context.getCurrentPlayer().getName() + " now has "
-                    + this.context.getCurrentPlayer().getAccount().getAmount() + " points";
-        } else {
-            return "no points added or removed";
+        if(amount > 0){
+            return String.format("Adds %d points to player", amount);
         }
+        else if (amount < 0){
+            return String.format("Removes %d points to player", -amount);
+        }
+
+        return "No points added or removed";
     }
 
     @Override
