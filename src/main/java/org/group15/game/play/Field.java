@@ -3,13 +3,13 @@ package org.group15.game.play;
 import org.group15.game.effects.Effect;
 import org.group15.player.Player;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class Field {
     public int position;
     public String description;
-    private final HashSet<Player> playersOnField = new HashSet<>(); // We use HashSet to ensure any field doesn't have duplicates
+    private final HashMap<Integer, Player> playersOnField = new HashMap<>(); // We use HashSet to ensure any field doesn't have duplicates
     private final Effect[] effects;
 
     public Field(Effect[] effects, int position) {
@@ -20,20 +20,20 @@ public class Field {
     // add player to list
     // return true if successful, else false
     public boolean addPlayer(Player player){
-        return playersOnField.add(player);
+        return playersOnField.put(player.getId(), player) != null;
     }
 
 
     // remove player from list
     // return true if successful, else false
     public boolean removePlayer(Player player){
-        return playersOnField.remove(player);
+        return playersOnField.remove(player.getId()) != null;
     }
 
 
     // Whether the array contains the player
     public boolean hasPlayer(Player player){
-        return playersOnField.contains(player);
+        return playersOnField.containsKey(player.getId());
     }
 
 
