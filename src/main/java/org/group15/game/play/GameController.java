@@ -42,6 +42,8 @@ public class GameController {
 
         applyFieldEffectsToCurrentPlayer(roll-1);
 
+        showField();
+
         model.getContext().doNextPlayerTurn();
 
     }
@@ -70,11 +72,12 @@ public class GameController {
     // Displays the winning player through the
     // GameView interface
     public boolean displayWinningPlayer(){
-        Player winPlayer;
+        Player winner;
 
         for(Player player: model.getContext().getAllPlayers()){
             if (player.getAccount().getAmount() == 3000){
-                winPlayer = player;
+                winner = player;
+                this.view.showWinningPlayer(winner);
                 return true;
             }
         }
@@ -94,7 +97,7 @@ public class GameController {
         for(int i = 0; i < dice.length; i++){
             roll += dice[i].getValue();
         }
-        return roll;
+        return roll -1;
     }
 
     // TODO
@@ -124,14 +127,19 @@ public class GameController {
     // TODO
     // Applies all the field effects to the player.
     private void applyFieldEffectsToCurrentPlayer(int roll){
-        model.getFields()[roll].applyFieldEffects();
+        this.model.getFields()[roll].applyFieldEffects();
+
 
     }
 
     // TODO
     // Returns the field which contains the specified player.
     private Field findFieldWithPlayer(Player player){
-
+        for(Field field: model.getFields()){
+            if(field.hasPlayer(player)){
+                return field;
+            }
+        }
         return null;
     }
 }

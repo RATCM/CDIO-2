@@ -24,9 +24,13 @@ public class PointChangeEffect extends Effect{
     @Override
     public String getDescription() {
         if (amount > 0) {
-            return "Adds " + amount + " points to player " + this.context.getCurrentPlayer() + "'s account";
+            return "Adds " + amount + " points to player " + this.context.getCurrentPlayer().getName() + "'s account"
+                    + System.lineSeparator() + this.context.getCurrentPlayer().getName() + " now has "
+                    + this.context.getCurrentPlayer().getAccount().getAmount() + " points";
         } else if (amount < 0) {
-            return "Removes " + amount + " points from player " + this.context.getCurrentPlayer() + "'s account";
+            return "Removes " + amount + " points from player " + this.context.getCurrentPlayer().getName() + "'s account"
+                    + System.lineSeparator() + this.context.getCurrentPlayer().getName() + " now has "
+                    + this.context.getCurrentPlayer().getAccount().getAmount() + " points";
         } else {
             return "no points added or removed";
         }

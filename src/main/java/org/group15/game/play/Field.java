@@ -16,12 +16,6 @@ public class Field {
     public Field(Effect[] effects, int position) {
         this.effects = effects;
         this.position = position;
-
-        StringBuilder effectDescription = new StringBuilder();
-        for (Effect effect : effects) {
-            effectDescription.append(effect.getDescription());
-        }
-        this.description = effectDescription.toString();
     }
 
     // add player to list
@@ -57,4 +51,13 @@ public class Field {
 
         return result;
     }
+    public String getDescription(){
+        StringBuilder effectDescription = new StringBuilder();
+        for (Effect effect : effects) {
+            effectDescription.append(effect.getDescription());
+        }
+
+        return description + effectDescription;
+    }
+
 }

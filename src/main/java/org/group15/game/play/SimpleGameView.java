@@ -15,12 +15,12 @@ public class SimpleGameView implements GameView {
     @Override
     public void showField(Field field) {
         System.out.println("Position: " + field.position + System.lineSeparator()
-                            + "Effects: " + field.description + System.lineSeparator());
+                            + "Effects: " + field.getDescription() + System.lineSeparator());
     }
 
     // TODO
     @Override
     public void showWinningPlayer(Player player) {
-        System.out.println("Player: " + player + " wins!");
+        System.out.println("Player: " + player.getName() + " wins!");
     }
 }
