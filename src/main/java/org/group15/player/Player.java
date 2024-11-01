@@ -1,9 +1,9 @@
 package org.group15.player;
 
 public class Player {
-    private int id;
-    private String name;
-    private Account account;
+    private final int id;
+    private final String name;
+    private final Account account;
 
     public Player(int id, String name) {
         this.id = id;
