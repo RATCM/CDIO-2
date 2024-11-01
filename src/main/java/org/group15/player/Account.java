@@ -19,24 +19,36 @@ public class Account {
     }
 
     public boolean addAmount(int amountToAdd) {
-        if (amount >= maxAmount && amountToAdd > 0 ) {
+        // addAmount fails if amountToAdd is negative
+        if(amountToAdd < 0){
             return false;
         }
-        if (amountToAdd > 0 && amount + amountToAdd <= maxAmount) {
-            amount += amountToAdd;
-            return true;
-        } else if (amountToAdd > 0) {
-            amount = maxAmount;
-            return true;
+
+        // addAmount fails if amount is at the maximum
+        // and amountToAdd is above zero
+        if (this.amount >= this.maxAmount && amountToAdd > 0 ) {
+            return false;
         }
-        return false;
+
+        // If nothing fails, we modify the amount and return true
+        this.amount = Math.clamp(this.amount + amountToAdd, 0, this.maxAmount);
+        return true;
     }
 
     public boolean removeAmount(int amountToRemove) {
-        if(amountToRemove > 0 && amountToRemove <= amount) {
-            amount -= amountToRemove;
-            return true;
+        // addAmount fails if amountToRemove is negative
+        if(amountToRemove < 0){
+            return false;
         }
-        return false;
+
+        // removeAmount fails if amount is at the minimum
+        // and amountToRemove is above zero
+        if (this.amount == 0 && amountToRemove > 0 ) {
+            return false;
+        }
+
+        // If nothing fails, we modify the amount and return true
+        amount = Math.clamp(this.amount - amountToRemove, 0, this.maxAmount);
+        return true;
     }
 }
