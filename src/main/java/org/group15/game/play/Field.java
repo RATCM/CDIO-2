@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Field {
     public int position;
-    public String description = "";
+    public String description;
     ArrayList<Player> playersOnField;
     private Effect[] effects;
 
