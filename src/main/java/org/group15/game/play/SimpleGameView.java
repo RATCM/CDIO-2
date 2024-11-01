@@ -11,14 +11,23 @@ public class SimpleGameView implements GameView {
         this.scanner = scanner;
     }
 
-    // TODO
     @Override
-    public void showField(Field field) {
-        System.out.println("Position: " + field.position + System.lineSeparator()
-                            + "Effects: " + field.getDescription() + System.lineSeparator());
+    public void showPlayerInfo(Player player) {
+        System.out.println("-- Player --");
+        System.out.printf("Name: %s%s", player.getName(), System.lineSeparator());
+        System.out.printf("Points: %d%s", player.getAccount().getAmount(), System.lineSeparator());
+        System.out.println("-----------");
+        System.out.println();
     }
 
-    // TODO
+    @Override
+    public void showField(Field field) {
+        System.out.println("-- Effects --");
+        System.out.println(field.getDescription());
+        System.out.println("-------------");
+        System.out.println();
+    }
+
     @Override
     public void showWinningPlayer(Player player) {
         System.out.println("Player: " + player.getName() + " wins!");
