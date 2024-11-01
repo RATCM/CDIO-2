@@ -2,10 +2,16 @@ package org.group15.player;
 
 public class Account {
     private int amount;
-    private final int maxAmount = 3000;
+    private final int maxAmount;
 
     public Account(int initAmount) {
         this.amount = Math.max(initAmount, 0);
+        this.maxAmount = 3000;
+    }
+
+    public Account(int initAmount, int maxAmount) {
+        this.amount = Math.max(initAmount, 0);
+        this.maxAmount = maxAmount;
     }
 
     public int getAmount() {
