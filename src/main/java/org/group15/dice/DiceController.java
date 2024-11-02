@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class DiceController {
 
-    private DiceView view;
-    private DiceModel dice;
+    private final DiceView view;
+    private final DiceModel dice;
 
     
     public DiceController(int numDice, int numSides, Scanner scanner) {
@@ -17,7 +17,15 @@ public class DiceController {
         dice = new DiceModel(diceArray); 
     }
 
-    
+    public DiceController(int numDice, int numSides, DiceView view){
+        this.view = view;
+        var diceArray = new Die[numDice];
+        for (int i = 0 ; i < numDice ; i++) {
+            diceArray[i] = new Die(numSides);
+        }
+        dice = new DiceModel(diceArray);
+    }
+
     public DiceModel retrieveUserRoll() {
         view.getUserRoll();
         this.rollDice();
