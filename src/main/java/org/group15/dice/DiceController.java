@@ -26,6 +26,12 @@ public class DiceController {
         dice = new DiceModel(diceArray);
     }
 
+    public DiceController(DiceModel dice, DiceView view){
+        this.view = view;
+        this.dice = dice;
+    }
+
+
     public DiceModel retrieveUserRoll() {
         view.getUserRoll();
         this.rollDice();
