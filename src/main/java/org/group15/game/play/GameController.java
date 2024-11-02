@@ -28,6 +28,13 @@ public class GameController {
         this.diceController = new DiceController(2,6, scanner);
     }
 
+    // This constructor is just used for testing purposes
+    GameController(GameModel model, GameView view, DiceController diceController){
+        this.model = model;
+        this.view = view;
+        this.diceController = diceController;
+    }
+
     // Calls the getUserRoll method in DiceController
     // And updates the game context
     public void rollDice(){
