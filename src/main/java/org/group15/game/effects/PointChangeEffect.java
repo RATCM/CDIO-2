@@ -27,7 +27,7 @@ public class PointChangeEffect extends Effect{
             return String.format("Adds %d points to player", amount);
         }
         else if (amount < 0){
-            return String.format("Removes %d points to player", -amount);
+            return String.format("Removes %d points from player", -amount);
         }
 
         return "No points added or removed";
