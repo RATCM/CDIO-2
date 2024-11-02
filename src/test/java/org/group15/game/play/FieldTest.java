@@ -23,13 +23,13 @@ class FieldTest {
         Player p2 = new Player(0,"Bob");
 
         // Act
-        sut.addPlayer(p1);
-        var success = sut.addPlayer(p2);
+        var success1 = sut.addPlayer(p1);
+        var success2 = sut.addPlayer(p2);
 
         // Assert
         assertAll(
-                () -> assertFalse(success),
-                () -> assertFalse(sut.hasPlayer(p2))
+                () -> assertTrue(success1),
+                () -> assertFalse(success2)
         );
     }
 
